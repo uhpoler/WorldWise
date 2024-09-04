@@ -1,11 +1,20 @@
 import styles from "./City.module.css";
-// import ButtonBack from "./ButtonBack";
 
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
+
+const flagemojiToPNG = (flag) => {
+  console.log("fghjj" + flag);
+  var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
+    .map((char) => String.fromCharCode(char - 127397).toLowerCase())
+    .join("");
+  return (
+    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
+  );
+};
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -15,15 +24,6 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 
-const flagemojiToPNG = (flag) => {
-  var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
-    .map((char) => String.fromCharCode(char - 127397).toLowerCase())
-    .join("");
-  return (
-    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
-  );
-};
-
 function City() {
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
@@ -32,7 +32,7 @@ function City() {
     function () {
       getCity(id);
     },
-    [id]
+    [id, getCity]
   );
 
   const { cityName, emoji, date, notes } = currentCity;
