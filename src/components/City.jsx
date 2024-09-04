@@ -6,15 +6,14 @@ import { useCities } from "../contexts/CitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
 
-const flagemojiToPNG = (flag) => {
-  console.log("fghjj" + flag);
-  var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
-    .map((char) => String.fromCharCode(char - 127397).toLowerCase())
-    .join("");
-  return (
-    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
-  );
-};
+// const flagemojiToPNG = (flag) => {
+//   var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
+//     .map((char) => String.fromCharCode(char - 127397).toLowerCase())
+//     .join("");
+//   return (
+//     <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
+//   );
+// };
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -39,12 +38,14 @@ function City() {
 
   if (isLoading) return <Spinner />;
 
+  console.log("hhh", currentCity);
+
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{flagemojiToPNG(emoji)}</span> {cityName}
+          <span>{emoji}</span> {cityName}
         </h3>
       </div>
 
