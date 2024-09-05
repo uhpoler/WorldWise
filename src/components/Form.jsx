@@ -12,15 +12,7 @@ import Spinner from "./Spinner";
 import DatePicker from "react-datepicker";
 import { useCities } from "../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
-
-// const flagemojiToPNG = (flag) => {
-//   var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
-//     .map((char) => String.fromCharCode(char - 127397).toLowerCase())
-//     .join("");
-//   return (
-//     <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
-//   );
-// };
+import { countryCodeToFlagEmoji, flagemojiToPNG } from "./EmojiToPNG";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
@@ -55,7 +47,7 @@ function Form() {
 
           setCityName(data.city || data.locality || "");
           setCountry(data.countryName);
-          setEmoji(data.countryCode);
+          setEmoji(countryCodeToFlagEmoji(data.countryCode));
         } catch (err) {
           setGeocodingError(err.message);
         } finally {
@@ -100,7 +92,7 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        <span className={styles.flag}>{emoji}</span>
+        <span className={styles.flag}>{flagemojiToPNG(emoji)}</span>
       </div>
 
       <div className={styles.row}>

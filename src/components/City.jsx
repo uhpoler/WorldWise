@@ -5,15 +5,7 @@ import { useParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
-
-// const flagemojiToPNG = (flag) => {
-//   var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
-//     .map((char) => String.fromCharCode(char - 127397).toLowerCase())
-//     .join("");
-//   return (
-//     <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />
-//   );
-// };
+import { flagemojiToPNG } from "./EmojiToPNG";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -45,7 +37,7 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <span>{flagemojiToPNG(emoji)}</span> {cityName}
         </h3>
       </div>
 
