@@ -36,7 +36,6 @@ function City() {
         <h6>City name</h6>
         <h3>
           <span>{emoji ? flagemojiToPNG(emoji) : ""}</span> {cityName}
-          {console.log(emoji)}
         </h3>
       </div>
 
