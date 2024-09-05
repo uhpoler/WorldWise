@@ -30,14 +30,13 @@ function City() {
 
   if (isLoading) return <Spinner />;
 
-  console.log("hhh", currentCity);
-
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{flagemojiToPNG(emoji)}</span> {cityName}
+          <span>{emoji ? flagemojiToPNG(emoji) : ""}</span> {cityName}
+          {console.log(emoji)}
         </h3>
       </div>
 

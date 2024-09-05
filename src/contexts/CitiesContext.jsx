@@ -117,8 +117,6 @@ function CitiesProvider({ children }) {
       });
       const data = await res.json();
 
-      console.log("jj", newCity);
-
       dispatch({ type: "city/created", payload: data });
     } catch {
       dispatch({
