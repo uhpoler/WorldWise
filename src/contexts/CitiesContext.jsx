@@ -105,5 +105,5 @@ function useCities() {
     throw new Error("CitiesContext was used outside the CitiesProvider");
   return context;
 }
-
+/* eslint-disable */
 export { CitiesProvider, useCities };

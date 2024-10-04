@@ -53,5 +53,5 @@ function useAuth() {
     throw new Error("AuthContext was used outside AuthProvider");
   return context;
 }
-
+/* eslint-disable */
 export { AuthProvider, useAuth };
